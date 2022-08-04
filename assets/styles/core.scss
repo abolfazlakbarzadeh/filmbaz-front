@@ -27,4 +27,19 @@ body {
     background-color: $color-background;
     min-height: 100vh;
     color: white;
+
+    &::-webkit-scrollbar {
+        width: .5rem;
+        background-color: $color-secondary;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $color-primary;
+        border-radius: .5rem;
+        transition: .3s;
+
+        &:active {
+            background-color: black;
+        }
+    }
 }

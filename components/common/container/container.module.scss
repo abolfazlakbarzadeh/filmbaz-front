@@ -1,12 +1,12 @@
 .container {
-    --margin: 10rem;
+    --margin: 7.5625rem;
 
     @media (min-width: $breakpoint-widescreen) {
         --margin: 12rem;
     }
 
     @media (max-width: $breakpoint-desktop) {
-        --margin: 8rem;
+        --margin: 7rem;
     }
 
     @media (max-width: $breakpoint-tablet) {
