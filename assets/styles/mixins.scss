@@ -1,0 +1,23 @@
+@mixin font($font-family, $file-name, $path, $weight) {
+    @font-face {
+        font-family: $font-family;
+        src: url("#{$path}/ttf/#{$file-name}.ttf") format("truetype"),
+        url("#{$path}/eot/#{$file-name}.eot"),
+        url("#{$path}/eot/#{$file-name}.eot?#iefix") format("embedded-opentype"),
+        url("#{$path}/woff/#{$file-name}.woff") format("woff"),
+        url("#{$path}/woff2/#{$file-name}.woff2") format("woff2");
+        font-weight: $weight;
+        font-style: normal;
+        font-display: swap;
+    }
+}
+
+@mixin rangePxGenerator($prefix, $from, $to, $attrs) {
+    @for $i from $from through $to {
+        .#{$prefix}-#{$i} {
+            @each $attr in $attrs {
+                #{$attr}: #{$i}px;
+            }
+        }
+    }
+}

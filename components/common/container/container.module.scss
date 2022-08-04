@@ -1,0 +1,22 @@
+.container {
+    --margin: 10rem;
+
+    @media (min-width: $breakpoint-widescreen) {
+        --margin: 12rem;
+    }
+
+    @media (max-width: $breakpoint-desktop) {
+        --margin: 8rem;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+        --margin: 5rem;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        --margin: 2rem;
+    }
+
+    margin-left: var(--margin);
+    margin-right: var(--margin);
+}

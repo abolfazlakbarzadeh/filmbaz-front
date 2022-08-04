@@ -1,0 +1,7 @@
+$path: "../fonts";
+@include font("IRANSans", "IRANSansWeb(FaNum)_UltraLight", $path, 100);
+@include font("IRANSans", "IRANSansWeb(FaNum)_Light", $path, 300);
+@include font("IRANSans", "IRANSansWeb(FaNum)", $path, 400);
+@include font("IRANSans", "IRANSansWeb(FaNum)_Medium", $path, 500);
+@include font("IRANSans", "IRANSansWeb(FaNum)_Bold", $path, 700);
+@include font("IRANSans", "IRANSansWeb(FaNum)_Black", $path, 900);

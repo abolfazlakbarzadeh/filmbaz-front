@@ -1,0 +1,30 @@
+@import "fonts";
+
+* {
+    font: normal 16px "IRANSans", sans-serif;
+    box-sizing: border-box;
+
+
+    @media (min-width: $breakpoint-widescreen) {
+        font-size: 110%;
+    }
+
+    @media (max-width: $breakpoint-desktop) {
+        font-size: 90%;
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+        font-size: 80%;
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        font-size: 70%;
+    }
+
+}
+
+body {
+    background-color: $color-background;
+    min-height: 100vh;
+    color: white;
+}
