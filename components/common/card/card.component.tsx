@@ -3,21 +3,35 @@ import { CommonUtils } from '../../../utils'
 import classes from './card.module.scss'
 
 type Padding = "none" | "xs" | "s" | "m" | "l" | "xl" | number
-type Radius = "none" | "xs" | "s" | "m" | "l" | "xl"
+type Radius = "none" | "xs" | "s" | "m" | "l" | "xl" | number
+type BackgroundColor = "primary" | "secondary" | "background"
 
 interface ICard extends HTMLElement {
   padding: Padding
   radius: Radius
+  backgroundColor: BackgroundColor
   children: any
   horizontalCenter: boolean
   fullWidth: boolean
+  fullHeight: boolean
 }
 
-export const Card = ({ padding = "m", radius = "m", children, fullWidth, horizontalCenter, className, ...rest }: Partial<ICard>) => {
+export const Card = ({
+  padding = "m",
+  radius = "m",
+  children,
+  backgroundColor = "secondary",
+  fullWidth,
+  fullHeight,
+  horizontalCenter,
+  className,
+  ...rest }: Partial<ICard>) => {
   return (
     <div {...rest} className={CommonUtils.classNamesGen([
+      classes.card,
       {
-        [classes.full_width]: fullWidth
+        [classes.full_width]: fullWidth,
+        [classes.full_height]: fullHeight
       },
       {
         'pad-5': padding == "xs",
@@ -32,10 +46,12 @@ export const Card = ({ padding = "m", radius = "m", children, fullWidth, horizon
         'rad-10': radius == "s",
         'rad-16': radius == "m",
         'rad-20': radius == "l",
-        'rad-26': radius == "xl"
+        [`rad-${radius}`]: typeof radius == "number"
       },
-      { 'horizontal-center': horizontalCenter }
-      , classes.card, className])}>
+      { 'horizontal-center': horizontalCenter },
+      classes[`color-${backgroundColor}`],
+      className
+    ])}>
       {children}
     </div >
   )

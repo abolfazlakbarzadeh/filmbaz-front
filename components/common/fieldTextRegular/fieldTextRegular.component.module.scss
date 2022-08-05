@@ -1,0 +1,33 @@
+.field_text_regular {
+    position: relative;
+
+    &,
+    input {
+        width: 100%;
+    }
+
+    input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: .8rem;
+
+
+        &::placeholder {
+            padding: 0 1rem;
+            font-size: .75rem;
+            font-weight: bold;
+        }
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: -.325rem;
+        right: 0;
+        width: 100%;
+        height: 1px;
+        background-color: rgba($color: $color-gray-med, $alpha: .3);
+    }
+}

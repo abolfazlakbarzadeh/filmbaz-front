@@ -1,0 +1,22 @@
+.section {
+    .title {
+        border-bottom: 1px solid transparent;
+        padding-bottom: .625rem;
+        font-size: 1rem;
+
+        &.underline {
+            padding-left: 1rem;
+            border-bottom-color: white;
+        }
+
+        &.center {
+            width: 100%;
+            text-align: center;
+            padding-left: unset;
+        }
+    }
+
+    .main {
+        width: 100%;
+    }
+}

@@ -5,8 +5,17 @@
 @include rangePxGenerator("padt", 5, 50, [padding-top]);
 @include rangePxGenerator("padb", 5, 50, [padding-bottom]);
 
+// margins
+@include rangePxGenerator("mar", 5, 50, [margin]);
+@include rangePxGenerator("marl", 5, 50, [margin-left]);
+@include rangePxGenerator("marr", 5, 50, [margin-right]);
+@include rangePxGenerator("mart", 5, 50, [margin-top]);
+@include rangePxGenerator("marb", 5, 50, [margin-bottom]);
+
 // border radius
 @include rangePxGenerator("rad", 5, 50, [border-radius]);
+// flex gap
+@include rangePxGenerator("gap", 5, 50, [gap]);
 
 // common classes
 .horizontal-center {
@@ -22,8 +31,16 @@
     flex-direction: column;
 }
 
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
 .flex-align-center {
     align-items: center;
+}
+
+.flex-align-stretch {
+    align-items: stretch;
 }
 
 .flex-align-start {
@@ -40,4 +57,26 @@
 
 .flex-justify-center {
     justify-content: center;
+}
+
+.button {
+    cursor: pointer;
+}
+
+.label {
+    font-size: 1rem;
+
+    &.bold {
+        font-weight: bold;
+    }
+
+    &.no-wrap {
+        white-space: nowrap;
+    }
+
+    @include rangeRemGenerator("size", 5, 50, [font-size], true);
+}
+
+.w-100 {
+    width: 100%;
 }

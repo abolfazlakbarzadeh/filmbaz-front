@@ -12,12 +12,44 @@
     }
 }
 
-@mixin rangePxGenerator($prefix, $from, $to, $attrs) {
+@mixin rangePxGenerator($prefix, $from, $to, $attrs, $self: false) {
     @for $i from $from through $to {
-        .#{$prefix}-#{$i} {
-            @each $attr in $attrs {
-                #{$attr}: #{$i}px;
+        @if $self {
+            &.#{$prefix}-#{$i} {
+                @each $attr in $attrs {
+                    #{$attr}: #{$i}px;
+                }
             }
         }
+
+        @else {
+            .#{$prefix}-#{$i} {
+                @each $attr in $attrs {
+                    #{$attr}: #{$i}px;
+                }
+            }
+        }
+
+    }
+}
+
+@mixin rangeRemGenerator($prefix, $from, $to, $attrs, $self: false) {
+    @for $i from $from through $to {
+        @if $self {
+            &.#{$prefix}-#{$i} {
+                @each $attr in $attrs {
+                    #{$attr}: #{$i / 16}rem;
+                }
+            }
+        }
+
+        @else {
+            .#{$prefix}-#{$i} {
+                @each $attr in $attrs {
+                    #{$attr}: #{$i / 16}rem;
+                }
+            }
+        }
+
     }
 }

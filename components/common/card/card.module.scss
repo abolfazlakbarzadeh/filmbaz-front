@@ -1,11 +1,28 @@
 .card {
     overflow: hidden;
-    background-color: $color-secondary;
     color: white;
     font-size: 1rem;
     width: fit-content;
 
+    &.color {
+        &-primary {
+            background-color: $color-primary;
+        }
+
+        &-secondary {
+            background-color: $color-secondary;
+        }
+
+        &-background {
+            background-color: $color-background;
+        }
+    }
+
     &.full_width {
         width: 100%;
+    }
+
+    &.full_height {
+        height: 100%;
     }
 }

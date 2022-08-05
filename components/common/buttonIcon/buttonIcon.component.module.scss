@@ -1,0 +1,19 @@
+.button_icon {
+    padding: 0.4375rem;
+    background-color: $color-secondary;
+    border-radius: .625rem;
+    transition: .3s;
+    user-select: none;
+
+    &.has_shadow {
+        box-shadow: 0 0 .325rem rgba($color: #000000, $alpha: .25);
+
+        &:hover {
+            box-shadow: 0 0 .625rem rgba($color: #000000, $alpha: .45);
+        }
+
+        &:active {
+            box-shadow: 0 0 0 rgba($color: #000000, $alpha: .45);
+        }
+    }
+}
