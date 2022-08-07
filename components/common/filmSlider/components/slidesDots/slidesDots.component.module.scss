@@ -1,0 +1,19 @@
+.slides_dots {
+    position: absolute;
+    bottom: 1.0625rem;
+    left: 50%;
+    z-index: 2;
+    transform: translateX(-50%);
+
+    .slide_dot {
+        width: 0.4375rem;
+        height: 0.4375rem;
+        border-radius: 50%;
+        background-color: rgba($color: #D9D9D9, $alpha: .3);
+        cursor: pointer;
+
+        &.active {
+            background-color: white;
+        }
+    }
+}

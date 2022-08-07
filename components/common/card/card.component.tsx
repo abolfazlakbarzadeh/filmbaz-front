@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, ReactHTMLElement } from 'react'
 import { CommonUtils } from '../../../utils'
 import classes from './card.module.scss'
 
@@ -14,7 +14,7 @@ type ICard = {
   horizontalCenter: boolean;
   fullWidth: boolean;
   fullHeight: boolean;
-} & HTMLElement
+} & ReactHTMLElement<HTMLElement>['props']
 
 export const Card = ({
   padding = "m",

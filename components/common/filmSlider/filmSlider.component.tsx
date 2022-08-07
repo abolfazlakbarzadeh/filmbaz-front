@@ -1,13 +1,14 @@
-// import "swiper/css"
-import React, { Fragment, useRef } from 'react'
+import React, { Fragment, useRef, useState } from 'react'
 import classes from './filmSlider.component.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import * as Components from './components'
 import { NextComponentType } from 'next'
 import { CommonUtils } from '../../../utils'
+import { Swiper as ISwiper, SwiperModule } from 'swiper/types'
+import { SlidesDots } from './components'
 
 
-type Templates = "Template1"
+type Templates = "Template1" | "Template2"
 type Radius = "none" | "xs" | "s" | "m" | "l" | "xl" | number
 
 export type IFilmSlider = {
@@ -17,9 +18,6 @@ export type IFilmSlider = {
 }
 
 const FilmSlider = (props: IFilmSlider) => {
-
-    const slider = useRef()
-
 
     const renderSlides = () => {
         return props.items.map((itm, idx) => {
@@ -31,20 +29,22 @@ const FilmSlider = (props: IFilmSlider) => {
             )
         })
     }
-
     return (
         <div style={{
             width: props.width,
             height: props.height
-        }} className={CommonUtils.classNamesGen([{
-            'rad-5': props.radius == "xs",
-            'rad-10': props.radius == "s",
-            'rad-16': props.radius == "m",
-            'rad-20': props.radius == "l",
-            [`rad-${props.radius}`]: typeof props.radius == "number"
-        }, 'horizontal-center', classes.film_slider])}>
+        }} className={CommonUtils.classNamesGen([
+            'p-relative',
+            {
+                'rad-5': props.radius == "xs",
+                'rad-10': props.radius == "s",
+                'rad-16': props.radius == "m",
+                'rad-20': props.radius == "l",
+                [`rad-${props.radius}`]: typeof props.radius == "number"
+            }, 'horizontal-center', classes.film_slider])}>
             <Swiper spaceBetween={16}>
                 {renderSlides()}
+                <SlidesDots items={props.items} />
             </Swiper>
         </div>
     )

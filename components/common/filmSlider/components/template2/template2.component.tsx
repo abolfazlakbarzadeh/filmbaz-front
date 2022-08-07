@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import React, { useEffect, useRef } from 'react'
 import { useSwiper, useSwiperSlide } from 'swiper/react';
-import classes from './template1.component.module.scss'
+import classes from './template2.component.module.scss'
 import type { IFilmSlider } from '../../filmSlider.component'
 import { CommonUtils } from '../../../../../utils'
 import { Icon } from '@iconify/react'
 import Link from 'next/link';
+import { Section } from '../../../../../components/common/section';
 
 type ITemplate1 = {
     title: string,
@@ -13,10 +14,10 @@ type ITemplate1 = {
     imdb: string,
     comments: number,
     slug: string,
-    type: string
+    summary: string,
 } & Pick<IFilmSlider, "width" | "height" | "radius">
 
-export const Template1 = (props: ITemplate1) => {
+export const Template2 = (props: ITemplate1) => {
 
     const swiperSlide = useSwiperSlide()
     const swiper = useSwiper()
@@ -60,40 +61,31 @@ export const Template1 = (props: ITemplate1) => {
                 </a>
             </Link>
             <div ref={detailsRef} className={CommonUtils.classNamesGen(["d-flex", "flex-column", "flex-justify-between", "flex-align-start", classes.show, classes.details])}>
-                <div className={classes.type}>
-                    {props.type == "cinema" ? "سینمایی" : "سریال"}
-                </div>
                 <div className={CommonUtils.classNamesGen(['d-flex', 'flex-column', 'flex-align-start', 'gap-10', 'w-100', classes.summary_details])}>
+                    <div className={CommonUtils.classNamesGen(['d-flex', 'gap-16', 'flex-align-center', 'w-100'])}>
+                        <div className={CommonUtils.classNamesGen(['d-flex', 'flex-align-center', 'gap-6'])}>
+                            <Icon style={{
+                                width: `${20 / 16}rem`,
+                                height: `${20 / 16}rem`,
+                            }} icon="la:imdb" />
+                            <div className="label bold size-10">{props.imdb}</div>
+                        </div>
+                        <div className={CommonUtils.classNamesGen(['d-flex', 'flex-align-center', 'gap-6'])}>
+                            <Icon style={{
+                                width: `${10 / 16}rem`,
+                                height: `${10 / 16}rem`,
+                            }} icon="fa6-solid:comment-dots" />
+                            <div className="label bold size-10">{`${props.comments} دیدگاه`}</div>
+                        </div>
+                    </div>
                     <Link href={props.slug}>
                         <a className={classes.title}>{props.title}</a>
                     </Link>
-                    <div className={CommonUtils.classNamesGen(['d-flex', 'flex-justify-between', 'flex-align-center', 'w-100'])}>
-                        <div className={CommonUtils.classNamesGen(['d-flex', 'flex-align-center', 'gap-10'])}>
-                            <div className={CommonUtils.classNamesGen(['d-flex', 'flex-align-center', 'gap-6'])}>
-                                <Icon style={{
-                                    width: `${20 / 16}rem`,
-                                    height: `${20 / 16}rem`,
-                                }} icon="la:imdb" />
-                                <div className="label bold size-10">{props.imdb}</div>
-                            </div>
-                            <div className={CommonUtils.classNamesGen(['d-flex', 'flex-align-center', 'gap-6'])}>
-                                <Icon style={{
-                                    width: `${10 / 16}rem`,
-                                    height: `${10 / 16}rem`,
-                                }} icon="fa6-solid:comment-dots" />
-                                <div className="label bold size-10">{`${props.comments} دیدگاه`}</div>
-                            </div>
+                    <Section titleBold title='خلاصه ای از داستان:' titleSize={13} className={CommonUtils.classNamesGen(['mart-21'])}>
+                        <div className={CommonUtils.classNamesGen(['label', 'size-12', classes.summary])}>
+                            {props.summary}
                         </div>
-                        <Link href={props.slug}>
-                            <a>
-                                <Icon style={{
-                                    width: '1rem',
-                                    height: '1rem'
-                                }} icon="akar-icons:circle-chevron-left-fill" />
-                            </a>
-                        </Link>
-
-                    </div>
+                    </Section>
                 </div>
             </div>
         </div>

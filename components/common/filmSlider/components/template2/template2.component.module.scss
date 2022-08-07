@@ -1,0 +1,46 @@
+.template1 {
+    position: relative;
+    overflow: hidden;
+
+    .image {
+        cursor: pointer;
+    }
+
+    .details {
+        position: absolute;
+        inset: 0;
+        padding: 1.5625rem;
+        background: linear-gradient(-90deg, rgba(0, 0, 0, 0.837) 60%, transparent);
+        opacity: 0;
+        transition: opacity .3s;
+        pointer-events: none;
+
+        &.show {
+            opacity: 1;
+        }
+
+        .type {
+            padding: 0.4375rem 1.0625rem;
+            background-color: rgba($color: #252525, $alpha: .59);
+            border-radius: .625rem;
+            font-size: 0.8125rem;
+            font-weight: bold;
+            pointer-events: all;
+        }
+
+        .summary_details {
+            padding: 0 1.5625rem;
+            pointer-events: all;
+
+            .title {
+                font-size: 0.8125rem;
+                font-weight: bold;
+            }
+        }
+
+        .summary {
+            max-width: 50%;
+            line-height: 1.3rem;
+        }
+    }
+}

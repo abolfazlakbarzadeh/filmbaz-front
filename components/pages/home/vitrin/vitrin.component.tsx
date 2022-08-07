@@ -33,7 +33,8 @@ export const VitrinComponent = () => {
   }
 
   return (
-    <Card fullWidth padding={40}>
+    <Card
+      data-testid="vitrin" fullWidth padding={40}>
       <Row className={CommonUtils.classNamesGen(['g-3', 'flex-align-center', classes.vitrin])}>
         <Col lg={3}>
           <Section title='دسته بندی ها' centerTitle underLineTitle>

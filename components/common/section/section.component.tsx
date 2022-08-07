@@ -6,6 +6,7 @@ import classes from './section.component.module.scss'
 type Options = {
     underLineTitle: boolean,
     centerTitle: boolean
+    titleBold: boolean
 }
 
 type ISection = {
@@ -14,6 +15,7 @@ type ISection = {
     className: any,
     icon: any,
     iconSize: number,
+    titleSize: number,
     headPadding: number
 
 } & Options & ReactHTMLElement<HTMLElement>['props']
@@ -21,12 +23,14 @@ type ISection = {
 const Section = ({
     children,
     centerTitle,
+    titleBold,
     underLineTitle,
     className,
     title,
     icon,
     headPadding,
     iconSize,
+    titleSize,
     ...rest
 }: Partial<ISection>) => {
     return (
@@ -54,6 +58,11 @@ const Section = ({
                     }} icon={icon} />
                 )}
                 <div className={CommonUtils.classNamesGen([
+                    'label',
+                    `size-${titleSize}`,
+                    {
+                        'bold': titleBold
+                    },
                     classes.title
                 ])}>
                     {title}
@@ -70,8 +79,10 @@ Section.defaultProps = {
     title: "untitled",
     underLineTitle: false,
     centerTitle: false,
+    titleBold: false,
     headPadding: 10,
     iconSize: 16,
+    titleSize: 16,
 }
 
 export { Section }

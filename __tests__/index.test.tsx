@@ -5,7 +5,7 @@ import "@testing-library/jest-dom";
 describe("Home", () => {
   it("render a heading", () => {
     render(<Home />);
-    // const vitrin = screen.getByTestId("vitrin");
-    // expect(vitrin).toBeInTheDocument();
+    const vitrin = screen.getByTestId("vitrin");
+    expect(vitrin).toBeInTheDocument();
   });
 });
