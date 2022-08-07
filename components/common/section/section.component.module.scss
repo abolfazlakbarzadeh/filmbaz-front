@@ -1,8 +1,14 @@
 .section {
     .title {
-        border-bottom: 1px solid transparent;
-        padding-bottom: .625rem;
         font-size: 1rem;
+    }
+
+    .main {
+        width: 100%;
+    }
+
+    .head {
+        border-bottom: 1px solid transparent;
 
         &.underline {
             padding-left: 1rem;
@@ -14,9 +20,5 @@
             text-align: center;
             padding-left: unset;
         }
-    }
-
-    .main {
-        width: 100%;
     }
 }

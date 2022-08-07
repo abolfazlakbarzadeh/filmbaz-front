@@ -2,19 +2,19 @@ import React, { ReactElement } from 'react'
 import { CommonUtils } from '../../../utils'
 import classes from './card.module.scss'
 
-type Padding = "none" | "xs" | "s" | "m" | "l" | "xl" | number
-type Radius = "none" | "xs" | "s" | "m" | "l" | "xl" | number
-type BackgroundColor = "primary" | "secondary" | "background"
+type Padding = "none" | "xs" | "s" | "m" | "l" | "xl" | number;
+type Radius = "none" | "xs" | "s" | "m" | "l" | "xl" | number;
+type BackgroundColor = "primary" | "secondary" | "background";
 
-interface ICard extends HTMLElement {
-  padding: Padding
-  radius: Radius
-  backgroundColor: BackgroundColor
-  children: any
-  horizontalCenter: boolean
-  fullWidth: boolean
-  fullHeight: boolean
-}
+type ICard = {
+  padding: Padding;
+  radius: Radius;
+  backgroundColor: BackgroundColor;
+  children: any;
+  horizontalCenter: boolean;
+  fullWidth: boolean;
+  fullHeight: boolean;
+} & HTMLElement
 
 export const Card = ({
   padding = "m",

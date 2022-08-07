@@ -1,0 +1,35 @@
+.template1 {
+  position: relative;
+  overflow: hidden;
+}
+.template1 .image {
+  cursor: pointer;
+}
+.template1 .details {
+  position: absolute;
+  inset: 0;
+  padding: 1.5625rem;
+  background: linear-gradient(0deg, black, rgba(94, 94, 94, 0.5607843137), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.template1 .details.show {
+  opacity: 1;
+}
+.template1 .details .type {
+  padding: 0.4375rem 1.0625rem;
+  background-color: rgba(37, 37, 37, 0.59);
+  border-radius: 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: bold;
+  pointer-events: all;
+}
+.template1 .details .summary_details {
+  padding: 0 1.5625rem;
+  pointer-events: all;
+}
+.template1 .details .summary_details .title {
+  font-size: 0.8125rem;
+  font-weight: bold;
+}/*# sourceMappingURL=template1.component.module.css.map */

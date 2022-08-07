@@ -36,7 +36,7 @@ export const VitrinComponent = () => {
     <Card fullWidth padding={40}>
       <Row className={CommonUtils.classNamesGen(['g-3', 'flex-align-center', classes.vitrin])}>
         <Col lg={3}>
-          <Section centerTitle title='دسته بندی ها'>
+          <Section title='دسته بندی ها' centerTitle underLineTitle>
             <div className={CommonUtils.classNamesGen(['d-flex', 'flex-column', 'flex-align-center', classes.categories])}>
               {renderVitrinCategories()}
             </div>

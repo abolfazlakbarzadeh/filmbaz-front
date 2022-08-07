@@ -1,0 +1,11 @@
+{
+  "test": ".(tsx|ts)?$",
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": true
+    },
+    "target": "es2017",
+    "loose": false
+  }
+}

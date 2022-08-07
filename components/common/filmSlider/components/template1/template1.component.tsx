@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React, { useEffect, useRef } from 'react'
 import { useSwiperSlide } from 'swiper/react';
 import classes from './template1.component.module.scss'
-import { IFilmSlider } from '../../filmSlider.component'
+import type { IFilmSlider } from '../../filmSlider.component'
 import { CommonUtils } from '../../../../../utils'
 import { Icon } from '@iconify/react'
 import Link from 'next/link';
@@ -20,7 +20,7 @@ export const Template1 = (props: ITemplate1) => {
 
     const swiperSlide = useSwiperSlide()
 
-    const detailsRef = useRef<HTMLElement>()
+    const detailsRef = useRef<any>()
 
     useEffect(() => {
         if (detailsRef.current) {
@@ -47,7 +47,9 @@ export const Template1 = (props: ITemplate1) => {
                 [`rad-${props.radius}`]: typeof props.radius == "number"
             }, classes.template1])}>
             <Link href={props.slug}>
-                <Image alt={props.title} src={props.img} className={classes.image} layout="fill" />
+                <a>
+                    <Image alt={props.title} src={props.img} className={classes.image} layout="fill" />
+                </a>
             </Link>
             <div ref={detailsRef} className={CommonUtils.classNamesGen(["d-flex", "flex-column", "flex-justify-between", "flex-align-start", classes.details])}>
                 <div className={classes.type}>

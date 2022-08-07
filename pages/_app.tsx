@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import '../assets/styles/common.scss'
 import '../assets/styles/core.scss'
 import "bootstrap/scss/bootstrap-grid.scss"
-import type { AppProps } from 'next/app'
+import { AppProps } from 'next/app'
 import { Fragment } from 'react'
 import Head from 'next/head'
 import { CommonUtils } from '../utils'
