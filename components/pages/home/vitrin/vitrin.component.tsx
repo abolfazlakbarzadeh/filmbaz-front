@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next'
 import React, { useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { CommonUtils } from '../../../../utils'
@@ -6,18 +7,20 @@ import classes from './vitrin.component.module.scss'
 
 export const VitrinComponent = () => {
 
+  const { t } = useTranslation()
+
   const [selectedCategory, setSelectedCategory] = useState(0)
 
   const renderVitrinCategories = () => {
 
     const items = [
-      "علمی تخیلی",
-      "تاریخی",
-      "جنگی",
-      "خانوادگی",
-      "زندگی نامه",
-      "رمانتیک",
-      "سیاسی",
+      "science_fiction",
+      "historical",
+      "war",
+      "familial",
+      "biography",
+      "romantic",
+      "political"
     ]
 
     return items.map((itm, idx) => (
@@ -26,7 +29,7 @@ export const VitrinComponent = () => {
         className={CommonUtils.classNamesGen([{ [classes.selected]: idx == selectedCategory }, classes.category_item])}
         onClick={() => setSelectedCategory(idx)}
       >
-        {itm}
+        {t(`geners:${itm}`)}
       </div>
     ))
 
@@ -37,7 +40,7 @@ export const VitrinComponent = () => {
       data-testid="vitrin" fullWidth padding={40}>
       <Row className={CommonUtils.classNamesGen(['g-3', 'flex-align-center', classes.vitrin])}>
         <Col lg={3}>
-          <Section title='دسته بندی ها' centerTitle underLineTitle>
+          <Section title={t("categories")} centerTitle underLineTitle>
             <div className={CommonUtils.classNamesGen(['d-flex', 'flex-column', 'flex-align-center', classes.categories])}>
               {renderVitrinCategories()}
             </div>

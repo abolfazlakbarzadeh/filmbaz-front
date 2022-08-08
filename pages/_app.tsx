@@ -4,28 +4,28 @@ import '../assets/styles/core.scss'
 import "bootstrap/scss/bootstrap-grid.scss"
 import "swiper/scss"
 import React from 'react'
-import { AppProps } from 'next/app'
+import { AppContext, AppProps } from 'next/app'
 import { Fragment } from 'react'
 import Head from 'next/head'
 import { CommonUtils } from '../utils'
 import { DefaultLayout } from '../layouts'
+import { appWithTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-function MyApp({ Component, pageProps, router }: AppProps) {
-
+const MyApp = ({ Component, pageProps, router }: AppProps) => {
 
   const getTitleTag = () => {
     let title_list = [(CommonUtils.getVarDataType(pageProps.head?.title || "") == "array" ?
       pageProps.head?.title.join(" - ") :
       pageProps.head?.title), 'FilmBaz']
 
-    if (Object.keys(router.components || {}).includes("/404"))
-      title_list.unshift('صفحه مورد نظر یافت نشد')
+    // if (Object.keys(router.components || {}).includes("/404"))
+    //   title_list.unshift('صفحه مورد نظر یافت نشد')
     return (
       <title>
         {title_list.filter(Boolean).join(" | ")}
       </title>)
   }
-
   const getMetaTags = () => {
     return pageProps.head?.meta || <></>
   }
@@ -38,6 +38,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
     return pageProps.head?.misc || <></>
   }
 
+
   return (
     <DefaultLayout>
       <Head>
@@ -46,9 +47,12 @@ function MyApp({ Component, pageProps, router }: AppProps) {
         {getHeadCss()}
         {getHeadMisc()}
       </Head>
-      <Component {...pageProps} />
+      <Component {...{
+        ...pageProps
+      }} />
     </DefaultLayout>
   )
 }
 
-export default MyApp
+
+export default appWithTranslation(MyApp)

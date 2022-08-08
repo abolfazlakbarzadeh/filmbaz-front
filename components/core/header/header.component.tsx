@@ -1,11 +1,16 @@
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Link from 'next/link'
 import React from 'react'
 import { Icon } from '@iconify/react'
 import { CommonUtils } from '../../../utils'
 import classes from './header.module.scss'
+import { useTranslation } from 'next-i18next'
 
 
 export const Header = () => {
+
+    const { t } = useTranslation()
+
     return (
         <div className={CommonUtils.classNamesGen(['d-flex',
             'flex-align-center',
@@ -21,27 +26,37 @@ export const Header = () => {
                 classes.nav])}>
                 <div className={classes.nav__item}>
                     <Link href="/">
-                        <a>صفحه اصلی</a>
+                        <a>
+                            {t('header:home')}
+                        </a>
                     </Link>
                 </div>
                 <div className={classes.nav__item}>
                     <Link href="/">
-                        <a>سینمایی</a>
+                        <a>
+                            {t('header:movie')}
+                        </a>
                     </Link>
                 </div>
                 <div className={classes.nav__item}>
                     <Link href="/">
-                        <a>سریال</a>
+                        <a>
+                            {t('series')}
+                        </a>
                     </Link>
                 </div>
                 <div className={classes.nav__item}>
                     <Link href="/">
-                        <a>دسته بندی ها</a>
+                        <a>
+                            {t('categories')}
+                        </a>
                     </Link>
                 </div>
                 <div className={classes.nav__item}>
                     <Link href="/">
-                        <a>تماس با ما</a>
+                        <a>
+                            {t('header:contact-us')}
+                        </a>
                     </Link>
                 </div>
             </div>
