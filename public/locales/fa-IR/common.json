@@ -9,5 +9,10 @@
   "series": "سریال",
   "summary_of_the_story": "خلاصه ای از داستان",
   "films": "فیلم ها",
-  "film_informations": "اطلاعات اثر"
+  "film_informations": "اطلاعات اثر",
+  "title": "عنوان",
+  "genre": "ژانر",
+  "director": "کارگردان",
+  "country": "کشور",
+  "rate": "امتیاز"
 }

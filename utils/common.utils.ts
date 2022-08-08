@@ -38,13 +38,13 @@ export async function getServerSideT(config: SSRConfig): Promise<TFunction> {
   return await r.i18n.init(r.initPromise);
 }
 
-export const getLocaleLanguage = (i18n?: I18n) => {
+export const getLocaleLanguage = (i18n?: any) => {
   const lang = i18n?.language?.split("-")[0] || "fa";
   return lang;
 };
 
 export const getLocaleVarData = (
-  i18n: I18n,
+  i18n: Partial<I18n>,
   data: Record<string, any>,
   varName: string
 ) => {

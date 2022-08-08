@@ -59,7 +59,6 @@ const Breadcrumbs = ({ dynamicParams, routesNames }: IBreadcrumbs) => {
     }
 
     return (
-        // <div className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', 'flex-wrap', classes.breadcrumbs)}>{renderBreadcrumbs()}</div>
         <div className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', 'flex-wrap', classes.breadcrumbs)}>{breadcrumbsParticulars.join(" / ")}</div>
     )
 }

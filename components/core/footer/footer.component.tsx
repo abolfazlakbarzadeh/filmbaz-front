@@ -1,9 +1,25 @@
 import { Icon } from '@iconify/react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { CommonUtils } from '../../../utils'
 import classes from './footer.module.scss'
 
 export const Footer = () => {
+
+    useEffect(() => {
+        const updateMousePostion = (e: MouseEvent) => {
+            const x = e.clientX
+            const y = e.clientY
+
+
+            document.documentElement.style.setProperty('--cursorX', `${x}px`)
+            document.documentElement.style.setProperty('--cursorY', `${y}px`)
+
+        }
+        document.addEventListener('mousemove', updateMousePostion)
+
+    }, [])
+
+
     return (
         <div className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'flex-align-center', classes.footer)}>
             <div className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'flex-align-center', classes.footer__main)}>

@@ -7,6 +7,7 @@ type Options = {
     underLineTitle: boolean,
     centerTitle: boolean
     titleBold: boolean
+    fullWidth?: boolean
 }
 
 type ISection = {
@@ -31,6 +32,7 @@ const Section = ({
     headPadding,
     iconSize,
     titleSize,
+    fullWidth,
     ...rest
 }: Partial<ISection>) => {
     return (
@@ -38,6 +40,9 @@ const Section = ({
             'd-flex',
             'flex-column',
             'flex-align-start',
+            {
+                'w-100': fullWidth
+            },
             classes.section,
             className)}>
             <div className={CommonUtils.classNamesGen(
@@ -80,6 +85,7 @@ Section.defaultProps = {
     underLineTitle: false,
     centerTitle: false,
     titleBold: false,
+    fullWidth: true,
     headPadding: 10,
     iconSize: 16,
     titleSize: 16,

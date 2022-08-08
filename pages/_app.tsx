@@ -11,6 +11,7 @@ import { CommonUtils } from '../utils'
 import { DefaultLayout } from '../layouts'
 import { appWithTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { Icon } from '@iconify/react'
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
 
@@ -38,6 +39,12 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
     return pageProps.head?.misc || <></>
   }
 
+  const webLightClickHandler = () => {
+    const body = document.getElementsByTagName('body')[0]
+    if (body)
+      body.classList.toggle('dark')
+  }
+
 
   return (
     <DefaultLayout>
@@ -47,6 +54,13 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
         {getHeadCss()}
         {getHeadMisc()}
       </Head>
+
+      <div className={CommonUtils.classNamesGen("web-lamp", 'd-flex', 'flex-justify-end')} onClick={webLightClickHandler}>
+        <Icon style={{
+          width: '2rem',
+          height: '2rem',
+        }} icon="mdi:coach-lamp" />
+      </div>
       <Component {...{
         ...pageProps
       }} />
