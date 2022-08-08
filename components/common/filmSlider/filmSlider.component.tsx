@@ -33,7 +33,7 @@ const FilmSlider = (props: IFilmSlider) => {
         <div style={{
             width: props.width,
             height: props.height
-        }} className={CommonUtils.classNamesGen([
+        }} className={CommonUtils.classNamesGen(
             'p-relative',
             {
                 'rad-5': props.radius == "xs",
@@ -41,7 +41,7 @@ const FilmSlider = (props: IFilmSlider) => {
                 'rad-16': props.radius == "m",
                 'rad-20': props.radius == "l",
                 [`rad-${props.radius}`]: typeof props.radius == "number"
-            }, 'horizontal-center', classes.film_slider])}>
+            }, 'horizontal-center', classes.film_slider)}>
             <Swiper spaceBetween={16}>
                 {renderSlides()}
                 <SlidesDots items={props.items} />

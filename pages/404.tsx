@@ -1,4 +1,5 @@
 // @ts-ignore
+import { GetStaticPropsContext } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { AppInitialProps } from 'next/app'
 import React from 'react'
@@ -7,24 +8,16 @@ import { getServerSideT } from 'utils/common.utils'
 
 export default function NotFound() {
     return (
-        <div className={CommonUtils.classNamesGen([
+        <div className={CommonUtils.classNamesGen(
             'd-flex',
             'flex-justify-center',
             'flex-align-center',
             'h-100'
-        ])}>NotFound</div>
+        )}>NotFound</div>
     )
 }
 
-
-// export const getServerSideProps = () => ({
-//     props: {
-//         head: {
-//             title: "صفحه مورد نظر یافت نشد"
-//         }
-//     }
-// })
-export const getStaticProps = async ({ locale }) => {
+export const getStaticProps = async ({ locale }: any) => {
 
     const traslation = await serverSideTranslations(locale)
     const t = await getServerSideT(traslation)

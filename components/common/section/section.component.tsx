@@ -34,13 +34,13 @@ const Section = ({
     ...rest
 }: Partial<ISection>) => {
     return (
-        <div {...rest} className={CommonUtils.classNamesGen([
+        <div {...rest} className={CommonUtils.classNamesGen(
             'd-flex',
             'flex-column',
             'flex-align-start',
             classes.section,
-            className])}>
-            <div className={CommonUtils.classNamesGen([
+            className)}>
+            <div className={CommonUtils.classNamesGen(
                 'd-flex',
                 'flex-align-center',
                 'gap-5',
@@ -50,21 +50,21 @@ const Section = ({
                     'flex-justify-center': centerTitle,
                     [classes.underline]: underLineTitle
                 },
-                classes.head])}>
+                classes.head)}>
                 {!!icon && (
                     <Icon style={{
                         width: `${(iconSize || 0) / 16}rem`,
                         height: `${(iconSize || 0) / 16}rem`
                     }} icon={icon} />
                 )}
-                <div className={CommonUtils.classNamesGen([
+                <div className={CommonUtils.classNamesGen(
                     'label',
                     `size-${titleSize}`,
                     {
                         'bold': titleBold
                     },
                     classes.title
-                ])}>
+                )}>
                     {title}
                 </div>
             </div>

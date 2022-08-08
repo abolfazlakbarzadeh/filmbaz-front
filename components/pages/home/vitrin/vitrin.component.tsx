@@ -26,7 +26,7 @@ export const VitrinComponent = () => {
     return items.map((itm, idx) => (
       <div
         key={`category_${idx}`}
-        className={CommonUtils.classNamesGen([{ [classes.selected]: idx == selectedCategory }, classes.category_item])}
+        className={CommonUtils.classNamesGen({ [classes.selected]: idx == selectedCategory }, classes.category_item)}
         onClick={() => setSelectedCategory(idx)}
       >
         {t(`geners:${itm}`)}
@@ -38,10 +38,10 @@ export const VitrinComponent = () => {
   return (
     <Card
       data-testid="vitrin" fullWidth padding={40}>
-      <Row className={CommonUtils.classNamesGen(['g-3', 'flex-align-center', classes.vitrin])}>
+      <Row className={CommonUtils.classNamesGen('g-3', 'flex-align-center', classes.vitrin)}>
         <Col lg={3}>
           <Section title={t("categories")} centerTitle underLineTitle>
-            <div className={CommonUtils.classNamesGen(['d-flex', 'flex-column', 'flex-align-center', classes.categories])}>
+            <div className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'flex-align-center', classes.categories)}>
               {renderVitrinCategories()}
             </div>
           </Section>

@@ -27,7 +27,7 @@ export const Card = ({
   className,
   ...rest }: Partial<ICard>) => {
   return (
-    <div {...rest} className={CommonUtils.classNamesGen([
+    <div {...rest} className={CommonUtils.classNamesGen(
       classes.card,
       {
         [classes.full_width]: fullWidth,
@@ -51,7 +51,7 @@ export const Card = ({
       { 'horizontal-center': horizontalCenter },
       classes[`color-${backgroundColor}`],
       className
-    ])}>
+    )}>
       {children}
     </div >
   )

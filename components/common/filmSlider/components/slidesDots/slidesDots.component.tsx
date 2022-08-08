@@ -21,17 +21,17 @@ export const SlidesDots = (props: ISlidesDots) => {
 
     const renderSlidesDots = () => {
         return props.items.map((itm, idx) => (
-            <div key={`slide_dot_${idx}`} className={CommonUtils.classNamesGen([
+            <div key={`slide_dot_${idx}`} className={CommonUtils.classNamesGen(
                 { [classes.active]: activeSlideIndex == idx },
                 classes.slide_dot
-            ])} onClick={() => {
+            )} onClick={() => {
                 swiper?.slideTo(idx)
             }} />
         ))
     }
 
     return (
-        <div className={CommonUtils.classNamesGen(['d-flex', 'flex-align-center', 'gap-10', classes.slides_dots])}>
+        <div className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', 'gap-10', classes.slides_dots)}>
             {renderSlidesDots()}
         </div>
     )

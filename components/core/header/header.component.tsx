@@ -12,18 +12,18 @@ export const Header = () => {
     const { t } = useTranslation()
 
     return (
-        <div className={CommonUtils.classNamesGen(['d-flex',
+        <div className={CommonUtils.classNamesGen('d-flex',
             'flex-align-center',
             'flex-justify-between',
             classes.header
-        ])}>
+        )}>
             <div className={classes.logo}>
                 Film Baz
             </div>
-            <div className={CommonUtils.classNamesGen(['d-flex',
+            <div className={CommonUtils.classNamesGen('d-flex',
                 'flex-align-center',
                 'flex-justify-center',
-                classes.nav])}>
+                classes.nav)}>
                 <div className={classes.nav__item}>
                     <Link href="/">
                         <a>
@@ -60,13 +60,13 @@ export const Header = () => {
                     </Link>
                 </div>
             </div>
-            <div className={CommonUtils.classNamesGen([
+            <div className={CommonUtils.classNamesGen(
                 'd-flex',
                 'flex-align-center',
                 'flex-justify-center',
                 classes.acts
-            ])}>
-                <div className={CommonUtils.classNamesGen([classes.act__item, classes.user])}>
+            )}>
+                <div className={CommonUtils.classNamesGen(classes.act__item, classes.user)}>
                     <Icon icon="carbon:user-avatar-filled-alt" />
                 </div>
             </div>

@@ -7,12 +7,13 @@ import { CreateClientReturn, I18n, SSRConfig, TFunction } from "next-i18next";
 
 export const getVarDataType = (data: any) => {
   const reg = /\[object |\]/g;
-  return Object.prototype.toString.call(data).replace(reg, "").toLowerCase();
+  return Object.prototype.toString.call(data)?.replace(reg, "").toLowerCase();
 };
 
-export const classNamesGen = (entry: any) => {
+export const classNamesGen = (..._entry: any) => {
   let classNames = "";
-
+  let entry: any = [..._entry];
+  if (entry.length <= 1) entry = entry[0] || "";
   if (getVarDataType(entry) == "array") {
     for (const cName of entry) {
       if (getVarDataType(cName) == "string") classNames += ` ${cName}`;
@@ -23,7 +24,7 @@ export const classNamesGen = (entry: any) => {
     for (const [key, value] of Object.entries(entry)) {
       if (!!value) classNames += ` ${key}`;
     }
-  }
+  } else if (getVarDataType(entry) == "string") classNames += ` ${entry}`;
   return classNames.trim();
 };
 
@@ -37,8 +38,8 @@ export async function getServerSideT(config: SSRConfig): Promise<TFunction> {
   return await r.i18n.init(r.initPromise);
 }
 
-export const getLocaleLanguage = (i18n: I18n) => {
-  const lang = i18n?.language.split("-")[0] || "fa";
+export const getLocaleLanguage = (i18n?: I18n) => {
+  const lang = i18n?.language?.split("-")[0] || "fa";
   return lang;
 };
 

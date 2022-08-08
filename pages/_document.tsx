@@ -7,7 +7,6 @@ import { getServerSideT } from 'utils/common.utils'
 
 export default function Document(props: DocumentProps) {
 
-
     return (
         <Html dir={props.locale == configs.default_locale ? 'rtl' : 'ltr'} lang={props.locale}>
             <Head />

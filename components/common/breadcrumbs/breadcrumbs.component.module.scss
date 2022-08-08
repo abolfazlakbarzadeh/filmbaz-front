@@ -1,0 +1,21 @@
+.breadcrumbs {
+    gap: 1rem;
+    font-size: .75rem;
+
+    .breadcrumb {
+        position: relative;
+        // font-size: .75rem;
+
+        &::before {
+            content: "/";
+            position: absolute;
+            right: -.7rem;
+        }
+
+        &:first-child {
+            &::before {
+                content: unset;
+            }
+        }
+    }
+}

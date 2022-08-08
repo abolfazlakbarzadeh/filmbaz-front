@@ -8,7 +8,7 @@ interface IContainer extends HTMLElement {
 
 export const Container = ({ children, ...rest }: Partial<IContainer>) => {
   return (
-    <div {...rest} className={CommonUtils.classNamesGen([classes.container])}>
+    <div {...rest} className={CommonUtils.classNamesGen(classes.container)}>
       {children}
     </div>
   )
