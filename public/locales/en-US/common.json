@@ -14,5 +14,9 @@
   "genre": "Genre",
   "director": "Director",
   "country": "Country",
-  "rate": "Rate"
+  "rate": "Rate",
+  "stars": "Stars",
+  "download": "Download",
+  "download_movie_with___qality": "Download movie with %s quality",
+  "crash_report": "Crash Report"
 }

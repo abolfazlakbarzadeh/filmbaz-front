@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react'
 import React, { ReactElement, ReactHTML, ReactHTMLElement, ReactNode } from 'react'
+import { classNamesGen } from 'utils/common.utils'
 import { CommonUtils } from '../../../utils'
 import classes from './section.component.module.scss'
 
@@ -36,7 +37,7 @@ const Section = ({
     ...rest
 }: Partial<ISection>) => {
     return (
-        <div {...rest} className={CommonUtils.classNamesGen(
+        <div {...rest} className={classNamesGen(
             'd-flex',
             'flex-column',
             'flex-align-start',
@@ -45,7 +46,7 @@ const Section = ({
             },
             classes.section,
             className)}>
-            <div className={CommonUtils.classNamesGen(
+            <div className={classNamesGen(
                 'd-flex',
                 'flex-align-center',
                 'gap-5',
@@ -62,7 +63,7 @@ const Section = ({
                         height: `${(iconSize || 0) / 16}rem`
                     }} icon={icon} />
                 )}
-                <div className={CommonUtils.classNamesGen(
+                <div className={classNamesGen(
                     'label',
                     `size-${titleSize}`,
                     {

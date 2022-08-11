@@ -12,11 +12,12 @@ import { DefaultLayout } from '../layouts'
 import { appWithTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Icon } from '@iconify/react'
+import { classNamesGen, getVarDataType } from 'utils/common.utils'
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
 
   const getTitleTag = () => {
-    let title_list = [(CommonUtils.getVarDataType(pageProps.head?.title || "") == "array" ?
+    let title_list = [(getVarDataType(pageProps.head?.title || "") == "array" ?
       pageProps.head?.title.join(" - ") :
       pageProps.head?.title), 'FilmBaz']
 
@@ -55,10 +56,11 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
         {getHeadMisc()}
       </Head>
 
-      <div className={CommonUtils.classNamesGen("web-lamp", 'd-flex', 'flex-justify-end')} onClick={webLightClickHandler}>
+      <div className={classNamesGen("web-lamp", 'd-flex')} onClick={webLightClickHandler}>
         <Icon style={{
           width: '2rem',
           height: '2rem',
+          marginRight: "auto"
         }} icon="mdi:coach-lamp" />
       </div>
       <Component {...{

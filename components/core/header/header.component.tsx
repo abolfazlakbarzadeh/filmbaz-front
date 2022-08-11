@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react'
 import { CommonUtils } from '../../../utils'
 import classes from './header.module.scss'
 import { useTranslation } from 'next-i18next'
+import { classNamesGen } from 'utils/common.utils';
 
 
 export const Header = () => {
@@ -12,7 +13,7 @@ export const Header = () => {
     const { t } = useTranslation()
 
     return (
-        <div className={CommonUtils.classNamesGen('d-flex',
+        <div className={classNamesGen('d-flex',
             'flex-align-center',
             'flex-justify-between',
             classes.header
@@ -20,7 +21,7 @@ export const Header = () => {
             <div className={classes.logo}>
                 Film Baz
             </div>
-            <div className={CommonUtils.classNamesGen('d-flex',
+            <div className={classNamesGen('d-flex',
                 'flex-align-center',
                 'flex-justify-center',
                 classes.nav)}>
@@ -60,13 +61,13 @@ export const Header = () => {
                     </Link>
                 </div>
             </div>
-            <div className={CommonUtils.classNamesGen(
+            <div className={classNamesGen(
                 'd-flex',
                 'flex-align-center',
                 'flex-justify-center',
                 classes.acts
             )}>
-                <div className={CommonUtils.classNamesGen(classes.act__item, classes.user)}>
+                <div className={classNamesGen(classes.act__item, classes.user)}>
                     <Icon icon="carbon:user-avatar-filled-alt" />
                 </div>
             </div>

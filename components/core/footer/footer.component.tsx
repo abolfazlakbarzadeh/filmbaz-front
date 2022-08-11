@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react'
 import React, { useEffect } from 'react'
+import { classNamesGen } from 'utils/common.utils'
 import { CommonUtils } from '../../../utils'
 import classes from './footer.module.scss'
 
@@ -21,9 +22,9 @@ export const Footer = () => {
 
 
     return (
-        <div className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'flex-align-center', classes.footer)}>
-            <div className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'flex-align-center', classes.footer__main)}>
-                <div className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'flex-align-start', classes.logo)}>
+        <div className={classNamesGen('d-flex', 'flex-column', 'flex-align-center', classes.footer)}>
+            <div className={classNamesGen('d-flex', 'flex-column', 'flex-align-center', classes.footer__main)}>
+                <div className={classNamesGen('d-flex', 'flex-column', 'flex-align-start', classes.logo)}>
                     <div className={classes.site_logo}>
                         Film Baz
                     </div>
@@ -32,7 +33,7 @@ export const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', classes.copyright)}>
+            <div className={classNamesGen('d-flex', 'flex-align-center', classes.copyright)}>
                 <div>ساخته شده با</div>
                 <Icon icon="ant-design:heart-filled" />
                 <div>توسط فیلمباز</div>

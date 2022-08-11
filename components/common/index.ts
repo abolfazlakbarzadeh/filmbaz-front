@@ -6,3 +6,4 @@ export * from "./fieldTextRegular";
 export * from "./filmSlider";
 export * from "./breadcrumbs";
 export * from "./accordian";
+export * from "./button";

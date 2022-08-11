@@ -1,4 +1,5 @@
 import React, { ReactElement, ReactHTMLElement } from 'react'
+import { classNamesGen } from 'utils/common.utils';
 import { CommonUtils } from '../../../utils'
 import classes from './card.module.scss'
 
@@ -27,7 +28,7 @@ export const Card = ({
   className,
   ...rest }: Partial<ICard>) => {
   return (
-    <div {...rest} className={CommonUtils.classNamesGen(
+    <div {...rest} className={classNamesGen(
       classes.card,
       {
         [classes.full_width]: fullWidth,

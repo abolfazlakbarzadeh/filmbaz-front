@@ -8,7 +8,7 @@ import { getServerSideT } from 'utils/common.utils'
 
 export default function NotFound() {
     return (
-        <div className={CommonUtils.classNamesGen(
+        <div className={classNamesGen(
             'd-flex',
             'flex-justify-center',
             'flex-align-center',

@@ -1,0 +1,19 @@
+.button {
+    padding: .25rem 1.375rem;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+
+    .main {
+        font-size: .625rem;
+    }
+
+    &.color {
+        &-primary {
+            background-color: $color-primary;
+        }
+
+        &-danger {
+            background-color: rgba($color-danger, .28);
+        }
+    }
+}

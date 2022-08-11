@@ -17,7 +17,7 @@ import { Fragment } from 'react'
 import { VitrinComponent } from '../components/pages/home'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { i18n, useTranslation } from 'next-i18next'
-import { getServerSideT } from '../utils/common.utils'
+import { classNamesGen, getServerSideT } from '../utils/common.utils'
 
 const Home: NextPage = (props) => {
 
@@ -99,14 +99,14 @@ const Home: NextPage = (props) => {
           <VitrinComponent />
         </Col>
         <Col xs={12}>
-          <Card fullWidth className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'padt-23', 'padb-23', 'padl-40', 'padr-40', classes.search_section)} radius={36}>
-            <div className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', classes.search_field)}>
+          <Card fullWidth className={classNamesGen('d-flex', 'flex-column', 'padt-23', 'padb-23', 'padl-40', 'padr-40', classes.search_section)} radius={36}>
+            <div className={classNamesGen('d-flex', 'flex-align-center', classes.search_field)}>
               <ButtonIcon size={26} icon="eva:search-fill" />
               <FieldTextRegualr placeholder={t('placeholders:you_can_search')} />
             </div>
-            <div className={CommonUtils.classNamesGen('d-flex', 'flex-wrap', classes.popular_searches)}>
-              <div className={CommonUtils.classNamesGen('label', 'size-12', 'bold', 'no-wrap')}>{t('hottest_searches')}:</div>
-              <div className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', 'flex-wrap', classes.items)}>
+            <div className={classNamesGen('d-flex', 'flex-wrap', classes.popular_searches)}>
+              <div className={classNamesGen('label', 'size-12', 'bold', 'no-wrap')}>{t('hottest_searches')}:</div>
+              <div className={classNamesGen('d-flex', 'flex-align-center', 'flex-wrap', classes.items)}>
                 {renderPopularSearchItems()}
               </div>
             </div>
@@ -114,7 +114,7 @@ const Home: NextPage = (props) => {
         </Col>
         <Col xs={12}>
           <Section icon="arcticons:audio-video-factory" headPadding={16} iconSize={30} title={t("last_updates")}>
-            <Row>
+            <Row className="g-3">
               <Col xs={12} lg={6}>
                 <FilmSlider radius={25} items={recentItemsSlides} width="fill" height={282} />
               </Col>

@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
+import { classNamesGen } from 'utils/common.utils'
 import { CommonUtils } from '../../../utils'
 import classes from './breadcrumbs.component.module.scss'
 
@@ -51,7 +52,7 @@ const Breadcrumbs = ({ dynamicParams, routesNames }: IBreadcrumbs) => {
     const renderBreadcrumbs = () => {
         return breadcrumbsParticulars.map((itm, idx) => {
             return (
-                <div key={`bread_crumb_${idx}`} className={CommonUtils.classNamesGen(classes.breadcrumb, { [classes.is_last]: idx == breadcrumbsParticulars.length - 1 })}>
+                <div key={`bread_crumb_${idx}`} className={classNamesGen(classes.breadcrumb, { [classes.is_last]: idx == breadcrumbsParticulars.length - 1 })}>
                     {itm}
                 </div>
             )
@@ -59,7 +60,7 @@ const Breadcrumbs = ({ dynamicParams, routesNames }: IBreadcrumbs) => {
     }
 
     return (
-        <div className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', 'flex-wrap', classes.breadcrumbs)}>{breadcrumbsParticulars.join(" / ")}</div>
+        <div className={classNamesGen('d-flex', 'flex-align-center', 'flex-wrap', classes.breadcrumbs)}>{breadcrumbsParticulars.join(" / ")}</div>
     )
 }
 

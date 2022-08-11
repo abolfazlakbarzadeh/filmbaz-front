@@ -1,5 +1,6 @@
 import { useTranslation } from 'next-i18next'
 import React from 'react'
+import { classNamesGen, getLocaleVarData } from 'utils/common.utils'
 import { CommonUtils } from '../../../../utils'
 import classes from './information.component.module.scss'
 
@@ -15,17 +16,17 @@ export const Information = (props: IInformation) => {
     const { i18n } = useTranslation()
 
     return (
-        <div className={CommonUtils.classNamesGen(
+        <div className={classNamesGen(
             'd-flex',
             'flex-align-center',
             'gap-6',
             classes.information
         )}>
-            <div className={CommonUtils.classNamesGen(classes.information_section, classes.information_name)}>
+            <div className={classNamesGen(classes.information_section, classes.information_name)}>
                 {props.name}
             </div>
-            <div className={CommonUtils.classNamesGen(classes.information_section, classes.information_value)}>
-                {CommonUtils.getLocaleVarData(i18n, props, 'value')}
+            <div className={classNamesGen(classes.information_section, classes.information_value)}>
+                {getLocaleVarData(i18n, props, 'value')}
             </div>
         </div>
     )

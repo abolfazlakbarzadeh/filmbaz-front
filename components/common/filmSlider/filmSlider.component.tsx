@@ -6,6 +6,7 @@ import { NextComponentType } from 'next'
 import { CommonUtils } from '../../../utils'
 import { Swiper as ISwiper, SwiperModule } from 'swiper/types'
 import { SlidesDots } from './components'
+import { classNamesGen } from 'utils/common.utils'
 
 
 type Templates = "Template1" | "Template2"
@@ -23,7 +24,7 @@ const FilmSlider = (props: IFilmSlider) => {
         return props.items.map((itm, idx) => {
             const Template: any = Components[props.template || "Template1"] || Fragment
             return (
-                <SwiperSlide key={`film_slide_${idx}`}>
+                <SwiperSlide className='h-100' key={`film_slide_${idx}`}>
                     <Template {...{ ...itm, width: props.width, height: props.height, radius: props.radius }} />
                 </SwiperSlide>
             )
@@ -32,8 +33,9 @@ const FilmSlider = (props: IFilmSlider) => {
     return (
         <div style={{
             width: props.width,
-            height: props.height
-        }} className={CommonUtils.classNamesGen(
+            // @ts-ignore
+            height: typeof props.height == "number" ? `${props.height / 16}rem` : props.height
+        }} className={classNamesGen(
             'p-relative',
             {
                 'rad-5': props.radius == "xs",
@@ -42,7 +44,7 @@ const FilmSlider = (props: IFilmSlider) => {
                 'rad-20': props.radius == "l",
                 [`rad-${props.radius}`]: typeof props.radius == "number"
             }, 'horizontal-center', classes.film_slider)}>
-            <Swiper spaceBetween={16}>
+            <Swiper className='h-100' spaceBetween={16}>
                 {renderSlides()}
                 <SlidesDots items={props.items} />
             </Swiper>

@@ -3,7 +3,13 @@ import configs from "../configs.json";
 import { createConfig } from "next-i18next/dist/commonjs/config/createConfig";
 // @ts-ignore
 import { default as createClient } from "next-i18next/dist/commonjs/createClient";
-import { CreateClientReturn, I18n, SSRConfig, TFunction } from "next-i18next";
+import {
+  CreateClientReturn,
+  I18n,
+  SSRConfig,
+  TFunction,
+  useTranslation,
+} from "next-i18next";
 
 export const getVarDataType = (data: any) => {
   const reg = /\[object |\]/g;
@@ -56,3 +62,18 @@ export const getLocaleVarData = (
     return data[varName];
   }
 };
+
+export const useDetectDirection = () => {
+  const { i18n } = useTranslation();
+
+  return {
+    isRtl: i18n.language == configs.default_locale,
+  };
+};
+
+export function strFormat(str: string) {
+  var args = [].slice.call(arguments, 1),
+    i = 0;
+
+  return str.replace(/%s/g, () => args[i++]);
+}

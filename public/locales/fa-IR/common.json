@@ -14,5 +14,9 @@
   "genre": "ژانر",
   "director": "کارگردان",
   "country": "کشور",
-  "rate": "امتیاز"
+  "rate": "امتیاز",
+  "stars": "ستارگان",
+  "download": "دانلود",
+  "download_movie_with___qality": "دانلود فیلم با کیفیت %s",
+  "crash_report": "گزارش خرابی"
 }

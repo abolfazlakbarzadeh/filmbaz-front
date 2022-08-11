@@ -8,6 +8,7 @@ import { Icon } from '@iconify/react'
 import Link from 'next/link';
 import { Section } from '../../../../../components/common/section';
 import { useTranslation } from 'next-i18next';
+import { classNamesGen, getLocaleVarData } from 'utils/common.utils';
 
 type ITemplate1 = {
     title: string,
@@ -40,7 +41,7 @@ export const Template2 = (props: ITemplate1) => {
         <div style={{
             width: typeof props.width == "number" ? `${props.width / 16}rem` : (props.width != "none" ? "100%" : undefined),
             height: typeof props.height == "number" ? `${props.height / 16}rem` : (props.height != "none" ? "100%" : undefined)
-        }} className={CommonUtils.classNamesGen(
+        }} className={classNamesGen(
             {
                 'rad-5': props.radius == "xs",
                 'rad-10': props.radius == "s",
@@ -50,20 +51,20 @@ export const Template2 = (props: ITemplate1) => {
             }, classes.template1)}>
             <Link href={`/film/${props.slug}`}>
                 <a>
-                    <Image alt={CommonUtils.getLocaleVarData(i18n, props, 'title')} src={props.img} className={classes.image} layout="fill" />
+                    <Image alt={getLocaleVarData(i18n, props, 'title')} src={props.img} className={classes.image} layout="fill" />
                 </a>
             </Link>
-            <div ref={detailsRef} className={CommonUtils.classNamesGen("d-flex", "flex-column", "flex-justify-between", "flex-align-start", classes.show, classes.details)}>
-                <div className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'flex-align-start', 'gap-10', 'w-100', classes.summary_details)}>
-                    <div className={CommonUtils.classNamesGen('d-flex', 'gap-16', 'flex-align-center', 'w-100')}>
-                        <div className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', 'gap-6')}>
+            <div ref={detailsRef} className={classNamesGen("d-flex", "flex-column", "flex-justify-between", "flex-align-start", classes.show, classes.details)}>
+                <div className={classNamesGen('d-flex', 'flex-column', 'flex-align-start', 'gap-10', 'w-100', classes.summary_details)}>
+                    <div className={classNamesGen('d-flex', 'gap-16', 'flex-align-center', 'w-100')}>
+                        <div className={classNamesGen('d-flex', 'flex-align-center', 'gap-6')}>
                             <Icon style={{
                                 width: `${20 / 16}rem`,
                                 height: `${20 / 16}rem`,
                             }} icon="la:imdb" />
                             <div className="label bold size-10">{props.imdb}</div>
                         </div>
-                        <div className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', 'gap-6')}>
+                        <div className={classNamesGen('d-flex', 'flex-align-center', 'gap-6')}>
                             <Icon style={{
                                 width: `${10 / 16}rem`,
                                 height: `${10 / 16}rem`,
@@ -72,11 +73,11 @@ export const Template2 = (props: ITemplate1) => {
                         </div>
                     </div>
                     <Link href={`/film/${props.slug}`}>
-                        <a className={classes.title}>{CommonUtils.getLocaleVarData(i18n, props, 'title')}</a>
+                        <a className={classes.title}>{getLocaleVarData(i18n, props, 'title')}</a>
                     </Link>
-                    <Section titleBold title={`${t('summary_of_the_story')}:`} titleSize={13} className={CommonUtils.classNamesGen('mart-21')}>
-                        <div className={CommonUtils.classNamesGen('label', 'size-12', classes.summary)}>
-                            {CommonUtils.getLocaleVarData(i18n, props, 'summary')}
+                    <Section titleBold title={`${t('summary_of_the_story')}:`} titleSize={13} className={classNamesGen('mart-21')}>
+                        <div className={classNamesGen('label', 'size-12', classes.summary)}>
+                            {getLocaleVarData(i18n, props, 'summary')}
                         </div>
                     </Section>
                 </div>

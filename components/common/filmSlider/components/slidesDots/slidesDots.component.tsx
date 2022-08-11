@@ -1,5 +1,6 @@
 import React, { ReactHTMLElement, useEffect, useState } from 'react'
 import { useSwiper } from 'swiper/react'
+import { classNamesGen } from 'utils/common.utils'
 import { CommonUtils } from '../../../../../utils'
 import classes from './slidesDots.component.module.scss'
 
@@ -21,7 +22,7 @@ export const SlidesDots = (props: ISlidesDots) => {
 
     const renderSlidesDots = () => {
         return props.items.map((itm, idx) => (
-            <div key={`slide_dot_${idx}`} className={CommonUtils.classNamesGen(
+            <div key={`slide_dot_${idx}`} className={classNamesGen(
                 { [classes.active]: activeSlideIndex == idx },
                 classes.slide_dot
             )} onClick={() => {
@@ -31,7 +32,7 @@ export const SlidesDots = (props: ISlidesDots) => {
     }
 
     return (
-        <div className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', 'gap-10', classes.slides_dots)}>
+        <div className={classNamesGen('d-flex', 'flex-align-center', 'gap-10', classes.slides_dots)}>
             {renderSlidesDots()}
         </div>
     )

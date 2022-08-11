@@ -1,0 +1,10 @@
+.download_item {
+    padding: .7rem 1rem;
+    background-color: rgba($color: #000000, $alpha: .2);
+    border-radius: .625rem;
+
+    .title {
+        font-size: .75rem;
+        font-weight: 600;
+    }
+}

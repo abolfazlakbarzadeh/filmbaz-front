@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react'
 import React, { ReactComponentElement, ReactElement, ReactHTMLElement } from 'react'
 import { CommonUtils } from 'utils'
+import { classNamesGen, useDetectDirection } from 'utils/common.utils'
 import classes from './accordian.component.module.scss'
 
 export type IAccordian = {
@@ -12,9 +13,10 @@ export type IAccordian = {
 } & ReactHTMLElement<HTMLDivElement>['props']
 
 const Accordian = (
-    { id, buttonContent, showArrowIcon, icon, iconSize, ...rest }: IAccordian
+    { id, buttonContent, showArrowIcon, icon, iconSize, children, ...rest }: IAccordian
 ) => {
 
+    const { isRtl } = useDetectDirection()
     const IDS = {
         context: id,
         header: `${id}_header`,
@@ -22,10 +24,13 @@ const Accordian = (
     }
 
 
+
+
+
     return (
         <div itemID={id} className={classes.accordian} {...rest}>
-            <div itemID={IDS.header} className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', 'flex-justify-between', classes.header)}>
-                <div className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', 'flex-justify-between', 'gap-10', classes.button_section)}>
+            <div itemID={IDS.header} className={classNamesGen('d-flex', 'flex-align-center', 'flex-justify-between', classes.header)}>
+                <div className={classNamesGen('d-flex', 'flex-align-center', 'flex-justify-between', 'gap-10', classes.button_section)}>
                     {
                         !!icon && (
                             <Icon style={{
@@ -42,9 +47,15 @@ const Accordian = (
                 </div>
                 <div className={classes.arrowIcon}>
                     {showArrowIcon && (
-                        <Icon icon="charm:chevron-right" />
+                        <Icon style={{
+                            width: `1rem`,
+                            height: `1rem`,
+                        }} icon={`charm:chevron-${isRtl ? 'right' : "left"}`} />
                     )}
                 </div>
+            </div>
+            <div itemID={IDS.content} className={classes.content}>
+                {children}
             </div>
         </div>
     )
@@ -53,7 +64,7 @@ const Accordian = (
 Accordian.defaultProps = {
     buttonContent: "",
     showArrowIcon: true,
-    buttonSize: 20
+    iconSize: 20
 }
 
 export { Accordian }

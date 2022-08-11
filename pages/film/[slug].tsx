@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { getServerSideT } from '../../utils/common.utils'
+import { classNamesGen, getLocaleVarData, getServerSideT, useDetectDirection } from '../../utils/common.utils'
 import { Breadcrumbs, Card, Section } from '../../components/common'
 import { CommonUtils } from '../../utils'
 import { useTranslation } from 'next-i18next'
@@ -49,10 +49,42 @@ const FilmPage = (props: IFilm) => {
     }
 
     return (
-        <Row className='gx-3'>
+        <Row className='g-3'>
+            <Col xs={12} lg={8}>
+                <div className={classNamesGen('d-flex', 'flex-column', 'mart-5')}>
+                    <Breadcrumbs
+                        routesNames={{
+                            'film': t('films')
+                        }}
+                        dynamicParams={{
+                            slug: () => getLocaleVarData(i18n, props.film, 'title')
+                        }}
+                    />
+                    <Card className={classNamesGen('mart-12')} padding={20} fullWidth>
+                        <div className={classNamesGen('d-flex', 'flex-column', 'gap-16')}>
+                            <div className={classes.film_pic}>
+                                <Image alt={getLocaleVarData(i18n, props.film, 'title')} layout='fill' src={props.film.pic_url} />
+                            </div>
+                            <div className={classes.film_title}>
+                                {getLocaleVarData(i18n, props.film, 'title')}
+                            </div>
+                            <Section icon="wi:stars" title={`${t('stars')}:`} iconSize={25} titleSize={14} fullWidth titleBold>
+                                <div className={classNamesGen('d-flex', 'flex-align-center', 'flex-justify-center', 'flex-wrap', 'gap-20')}>
+                                    {renderStarActors()}
+                                </div>
+                            </Section>
+                            <Section icon="akar-icons:cloud-download" title={`${t('download')}:`} iconSize={25} titleSize={14} fullWidth titleBold>
+                                <div className={classNamesGen('d-flex', 'flex-column', 'gap-5')}>
+                                    {renderDownloadSections()}
+                                </div>
+                            </Section>
+                        </div>
+                    </Card>
+                </div>
+            </Col>
             <Col xs={12} lg={4}>
                 <Card fullWidth padding={19}>
-                    <div className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'flex-align-center', 'gap-12')}>
+                    <div className={classNamesGen('d-flex', 'flex-column', 'flex-align-center', 'gap-12')}>
                         <Section
                             titleSize={12}
                             titleBold
@@ -60,7 +92,7 @@ const FilmPage = (props: IFilm) => {
                             icon="icon-park-outline:movie-board"
                             iconSize={20}
                         >
-                            <div className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'gap-8')}>
+                            <div className={classNamesGen('d-flex', 'flex-column', 'gap-8')}>
                                 {renderInformations()}
                             </div>
                         </Section>
@@ -71,43 +103,11 @@ const FilmPage = (props: IFilm) => {
                             icon="iconoir:movie"
                             iconSize={20}
                         >   <div className={classes.summary}>
-                                {CommonUtils.getLocaleVarData(i18n, props.film, 'summary')}
+                                {getLocaleVarData(i18n, props.film, 'summary')}
                             </div>
                         </Section>
                     </div>
                 </Card>
-            </Col>
-            <Col xs={12} lg={8}>
-                <div className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'mart-5')}>
-                    <Breadcrumbs
-                        routesNames={{
-                            'film': t('films')
-                        }}
-                        dynamicParams={{
-                            slug: () => CommonUtils.getLocaleVarData(i18n, props.film, 'title')
-                        }}
-                    />
-                    <Card className={CommonUtils.classNamesGen('mart-12')} padding={20} fullWidth>
-                        <div className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'gap-16')}>
-                            <div className={classes.film_pic}>
-                                <Image alt={CommonUtils.getLocaleVarData(i18n, props.film, 'title')} layout='fill' src={props.film.pic_url} />
-                            </div>
-                            <div className={classes.film_title}>
-                                {CommonUtils.getLocaleVarData(i18n, props.film, 'title')}
-                            </div>
-                            <Section icon="wi:stars" title="ستارگان:" iconSize={25} titleSize={14} fullWidth titleBold>
-                                <div className={CommonUtils.classNamesGen('d-flex', 'flex-align-center', 'flex-justify-center', 'flex-wrap', 'gap-20')}>
-                                    {renderStarActors()}
-                                </div>
-                            </Section>
-                            <Section icon="akar-icons:cloud-download" title="دانلود:" iconSize={25} titleSize={14} fullWidth titleBold>
-                                <div className={CommonUtils.classNamesGen('d-flex', 'flex-column', 'gap-5')}>
-                                    {renderDownloadSections()}
-                                </div>
-                            </Section>
-                        </div>
-                    </Card>
-                </div>
             </Col>
         </Row>
     )
@@ -253,7 +253,7 @@ export const getServerSideProps = async ({ locale }: any) => {
             ...traslation,
             film,
             head: {
-                title: `${CommonUtils.getLocaleVarData({ language: locale }, film, 'title')}`
+                title: `${getLocaleVarData({ language: locale }, film, 'title')}`
             }
         },
     };
