@@ -2,3 +2,17 @@
     font-size: 0.75rem;
     text-align: justify;
 }
+
+.film_pic {
+    position: relative;
+    width: 100%;
+    height: 20.25rem;
+    border-radius: 1.5625rem;
+    overflow: hidden;
+    box-shadow: 0 0 .625rem rgba($color: #000000, $alpha: .5);
+}
+
+.film_title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+}

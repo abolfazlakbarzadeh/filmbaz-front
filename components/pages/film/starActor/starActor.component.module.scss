@@ -1,0 +1,15 @@
+.starActor {
+    .actor_pic {
+        position: relative;
+        width: 4.9375rem;
+        height: 4.9375rem;
+        border-radius: 50%;
+        border: .25rem solid $color-background;
+        overflow: hidden;
+    }
+
+    .actor_name {
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+}
