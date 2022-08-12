@@ -24,5 +24,6 @@ export async function middleware(request: NextRequest & { auth?: any }) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: "/user/:path*",
+  // matcher: "/user/:path*",
+  matcher: "/film/:path*",
 };

@@ -3,8 +3,8 @@ import '../assets/styles/common.scss'
 import '../assets/styles/core.scss'
 import "bootstrap/scss/bootstrap-grid.scss"
 import "swiper/scss"
-import React from 'react'
-import { AppContext, AppProps } from 'next/app'
+import React, { useContext } from 'react'
+import App, { AppContext, AppProps } from 'next/app'
 import { Fragment } from 'react'
 import Head from 'next/head'
 import { CommonUtils } from '../utils'
@@ -12,17 +12,18 @@ import { DefaultLayout } from '../layouts'
 import { appWithTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Icon } from '@iconify/react'
-import { classNamesGen, getVarDataType } from 'utils/common.utils'
+import { classNamesGen, detectDevice, getServerSideT, getVarDataType } from 'utils/common.utils'
+import { appWithDevice, DeviceContext } from 'utils/appWithDevice.util'
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {
+
+  const device = useContext(DeviceContext)
 
   const getTitleTag = () => {
     let title_list = [(getVarDataType(pageProps.head?.title || "") == "array" ?
       pageProps.head?.title.join(" - ") :
       pageProps.head?.title), 'FilmBaz']
 
-    // if (Object.keys(router.components || {}).includes("/404"))
-    //   title_list.unshift('صفحه مورد نظر یافت نشد')
     return (
       <title>
         {title_list.filter(Boolean).join(" | ")}
@@ -47,6 +48,8 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   }
 
 
+
+
   return (
     <DefaultLayout>
       <Head>
@@ -55,14 +58,15 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
         {getHeadCss()}
         {getHeadMisc()}
       </Head>
-
-      <div className={classNamesGen("web-lamp", 'd-flex')} onClick={webLightClickHandler}>
-        <Icon style={{
-          width: '2rem',
-          height: '2rem',
-          marginRight: "auto"
-        }} icon="mdi:coach-lamp" />
-      </div>
+      {!device.isMobile && (
+        <div className={classNamesGen("web-lamp", 'd-flex')} onClick={webLightClickHandler}>
+          <Icon style={{
+            width: '2rem',
+            height: '2rem',
+            marginRight: "auto"
+          }} icon="mdi:coach-lamp" />
+        </div>
+      )}
       <Component {...{
         ...pageProps
       }} />
@@ -71,4 +75,4 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
 }
 
 
-export default appWithTranslation(MyApp)
+export default appWithTranslation(appWithDevice(MyApp))

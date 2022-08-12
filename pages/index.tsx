@@ -17,7 +17,7 @@ import { Fragment } from 'react'
 import { VitrinComponent } from '../components/pages/home'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { i18n, useTranslation } from 'next-i18next'
-import { classNamesGen, getServerSideT } from '../utils/common.utils'
+import { classNamesGen, detectDevice, getServerSideT } from '../utils/common.utils'
 
 const Home: NextPage = (props) => {
 
@@ -135,14 +135,15 @@ const Home: NextPage = (props) => {
 }
 
 
-export const getServerSideProps = async ({ locale }: any) => {
+export const getServerSideProps = async ({ locale, req }: any) => {
 
   const traslation = await serverSideTranslations(locale)
   const t = await getServerSideT(traslation)
-
+  const device = detectDevice({ req })
   return {
     props: {
       ...traslation,
+      device,
       head: { title: t('page_titles:home_page') || "" }
     }
   }

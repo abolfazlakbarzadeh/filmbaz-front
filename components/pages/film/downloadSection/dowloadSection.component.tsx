@@ -17,7 +17,7 @@ export interface IDownloadSection {
     title: string,
     title_en?: string,
     qualities: DownloadInfo
-}[]
+}
 
 
 

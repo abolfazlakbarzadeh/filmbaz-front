@@ -10,6 +10,8 @@ import {
   TFunction,
   useTranslation,
 } from "next-i18next";
+import App, { AppContext, AppProps } from "next/app";
+import React, { createContext, ReactElement } from "react";
 
 export const getVarDataType = (data: any) => {
   const reg = /\[object |\]/g;
@@ -63,17 +65,28 @@ export const getLocaleVarData = (
   }
 };
 
-export const useDetectDirection = () => {
-  const { i18n } = useTranslation();
-
-  return {
-    isRtl: i18n.language == configs.default_locale,
-  };
-};
-
 export function strFormat(str: string) {
   var args = [].slice.call(arguments, 1),
     i = 0;
 
   return str.replace(/%s/g, () => args[i++]);
 }
+
+export const detectDevice = (ctx?: any) => {
+  const userAgent = ctx.req?.headers["user-agent"] || "";
+  const isLine = /\bLine\//i.test(userAgent) || false;
+  const isMobile = /(iPad|iPhone|Android|Mobile)/i.test(userAgent) || false;
+  const rules = [
+    "WebView",
+    "(iPhone|iPod|iPad)(?!.*Safari/)",
+    "Android.*(wv|.0.0.0)",
+  ];
+  const regex = new RegExp(`(${rules.join("|")})`, "ig");
+  const isInApp = Boolean(userAgent.match(regex));
+
+  return {
+    isLine,
+    isMobile,
+    isInApp,
+  };
+};

@@ -3,7 +3,7 @@ import { NextPage } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React from 'react'
 import { Col, Row } from 'react-bootstrap'
-import { classNamesGen, getLocaleVarData, getServerSideT, useDetectDirection } from '../../utils/common.utils'
+import { classNamesGen, detectDevice, getLocaleVarData, getServerSideT } from '../../utils/common.utils'
 import { Breadcrumbs, Card, Section } from '../../components/common'
 import { CommonUtils } from '../../utils'
 import { useTranslation } from 'next-i18next'
@@ -29,6 +29,7 @@ interface IFilm {
 const FilmPage = (props: IFilm) => {
 
     const { t, i18n } = useTranslation()
+
 
     const renderInformations = () => {
         return props.film?.informations.map((info, idx) => (
@@ -115,12 +116,13 @@ const FilmPage = (props: IFilm) => {
 
 
 
-export const getServerSideProps = async ({ locale }: any) => {
+export const getServerSideProps = async (props: any) => {
+
+    const { locale } = props
 
     const traslation = await serverSideTranslations(locale)
     const t = await getServerSideT(traslation)
-
-
+    const device = detectDevice(props)
     const film: Film = {
         title: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ",
         title_en: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
@@ -203,12 +205,6 @@ export const getServerSideProps = async ({ locale }: any) => {
                         title_en: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                         url: "/test",
                         url_support: "/test_support",
-                    },
-                    '320p': {
-                        title: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ",
-                        title_en: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                        url: "/test",
-                        url_support: "/test_support",
                     }
                 }
 
@@ -251,6 +247,7 @@ export const getServerSideProps = async ({ locale }: any) => {
     return {
         props: {
             ...traslation,
+            device,
             film,
             head: {
                 title: `${getLocaleVarData({ language: locale }, film, 'title')}`
